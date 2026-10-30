@@ -9,7 +9,49 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Office.Interop.Excel" Version="16.0.18925.20022" />
+    <Compile Remove="Output\**" />
+    <EmbeddedResource Remove="Output\**" />
+    <None Remove="Output\**" />
+    <Page Remove="Output\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="SAMPLES\CIRCLE.txt" />
+    <None Remove="SAMPLES\LINE.txt" />
+    <None Remove="SAMPLES\POINT.txt" />
+    <None Remove="SAMPLES\POLYLINE.txt" />
+    <None Remove="SAMPLES\SAMPLE.txt" />
+    <None Remove="SAMPLES\TEXT.txt" />
+    <None Remove="SAMPLES\VERTEX.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="SAMPLES\CIRCLE.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SAMPLES\LINE.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SAMPLES\POINT.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SAMPLES\POLYLINE.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SAMPLES\SAMPLE.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SAMPLES\TEXT.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SAMPLES\VERTEX.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="ExcelDna.Interop" Version="16.0.0" />
+	  <PackageReference Include="System.Text.Encoding.CodePages" Version="10.0.14" />
   </ItemGroup>
 
 </Project>

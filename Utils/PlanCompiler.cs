@@ -94,7 +94,7 @@ namespace ProfileMaker.Utils
             frame += await CreateLine(_extremeX + 405, _extremeX + 455, 20, 20, "Штамп");
             frame += await CreateLine(_extremeX + 270, _extremeX + 335, 15, 15, "Штамп");
             frame += await CreateLine(_extremeX + 270, _extremeX + 455, 10, 10, "Штамп");
-            frame += await CreateLine(_extremeX + 270, _extremeX + 335, 5, 55, "Штамп");
+            frame += await CreateLine(_extremeX + 270, _extremeX + 335, 5, 5, "Штамп");
             frame += await CreateLine(_extremeX + 270, _extremeX + 335, _zeroY, _zeroY, "Штамп");
 
             // Заполнение правого подрамника ГОСТ 
@@ -402,10 +402,10 @@ namespace ProfileMaker.Utils
                             points += await CreateText(lineX - 0.5, lineY + 20, point.Note, "0", 1.5, 90);
                             points += await CreateLine(lineX, lineX, lineY, lineY + 35);
                             points += await CreateText(lineX + 2.5, lineY + 20, point.LengthByFormat, "0", 1.5, 90);
-                            if (type != "")
+                            /*if (type != "")
                             {
                                 points += await CreateInsert(lineX, lineY + 35, type);
-                            }
+                            }*/
                         }
                         shiftNote = false;
                     }
@@ -422,10 +422,10 @@ namespace ProfileMaker.Utils
                             points += await CreateLine(lineX, lineX, lineY, lineY + 25);
                             points += await CreateText(lineX + 2.5, lineY + 2, point.LengthByFormat, "0", 2, 90);
 
-                            if (type != "")
+                            /*if (type != "")
                             {
                                 points += await CreateInsert(lineX, lineY + 25, type);
-                            }
+                            }*/
                         }
 
                         shiftNote = true;
@@ -723,7 +723,7 @@ public async Task<string> NumbersDraw(
         /// <returns> Элемент "линия" для формата dxf </returns>
         private async Task<string> CreateLine(double x1, double x2, double y1, double y2, string layer = "0")
         {
-            string lineSamplePath = AppDomain.CurrentDomain.BaseDirectory + "\\SAMPLE\\LINE.txt";
+            string lineSamplePath = AppDomain.CurrentDomain.BaseDirectory + "\\SAMPLES\\LINE.txt";
             var lineSample = "";
             using (StreamReader reader = new StreamReader(lineSamplePath))
             {
@@ -765,7 +765,7 @@ public async Task<string> NumbersDraw(
             double turn = 0.0,
             int color = 7)
         {
-            string textSamplePath = AppDomain.CurrentDomain.BaseDirectory + "\\SAMPLE\\TEXT.txt";
+            string textSamplePath = AppDomain.CurrentDomain.BaseDirectory + "\\SAMPLES\\TEXT.txt";
             var textSample = "";
             using (StreamReader reader = new StreamReader(textSamplePath))
             {
@@ -801,7 +801,7 @@ public async Task<string> NumbersDraw(
         /// <returns> Элемент "круг" для формата dxf / returns: string</returns>
         private async Task<string> CreateCircle(double x, double y, double r, string layer = "0", int color = 7)
         {
-            string circleSamplePath = AppDomain.CurrentDomain.BaseDirectory + "\\SAMPLE\\CIRCLE.txt";
+            string circleSamplePath = AppDomain.CurrentDomain.BaseDirectory + "\\SAMPLES\\CIRCLE.txt";
             var circleSample = "";
             using (StreamReader reader = new StreamReader(circleSamplePath))
             {
@@ -832,7 +832,7 @@ public async Task<string> NumbersDraw(
         /// <returns> Элемент "полилиния" для формата dxf </returns>
         private async Task<string> CreatePolyline(int color, string vertexes, string layer = "0")
         {
-            string polylineSamplePath = AppDomain.CurrentDomain.BaseDirectory + "\\SAMPLE\\POLYLINE.txt";
+            string polylineSamplePath = AppDomain.CurrentDomain.BaseDirectory + "\\SAMPLES\\POLYLINE.txt";
             var polylineSample = "";
             using (StreamReader reader = new StreamReader(polylineSamplePath))
             {
@@ -859,7 +859,7 @@ public async Task<string> NumbersDraw(
         /// <returns> Элемент "вершина" для формата dxf </returns>
         private async Task<string> CreateVertex(double x, double y, int color, string layer = "0")
         {
-            string vertexSamplePath = AppDomain.CurrentDomain.BaseDirectory + "\\SAMPLE\\VERTEX.txt";
+            string vertexSamplePath = AppDomain.CurrentDomain.BaseDirectory + "\\SAMPLES\\VERTEX.txt";
             var vertexSample = "";
             using (StreamReader reader = new StreamReader(vertexSamplePath))
             {
@@ -889,7 +889,7 @@ public async Task<string> NumbersDraw(
         /// <returns> Элемент "вставка" для формата dxf </returns>
         private async Task<string> CreateInsert(double x, double y, string type, string layer = "0")
         {
-            string insertSamplePath = AppDomain.CurrentDomain.BaseDirectory + "\\SAMPLE\\INSERT.txt";
+            string insertSamplePath = AppDomain.CurrentDomain.BaseDirectory + "\\SAMPLES\\INSERT.txt";
             var insertSample = "";
             using (StreamReader reader = new StreamReader(insertSamplePath))
             {

@@ -21,8 +21,8 @@ namespace ProfileMaker
             _dialogService = new DialogService();
             _externalData = new List<ExternalData>();
             HorizontalScale = Consts.HorizontalScale;
-            VerticalScale = Consts.VertcalScale;
-            VerticalGroundScale = Consts.VertcalGroundScale;
+            VerticalScale = Consts.VerticalScale;
+            VerticalGroundScale = Consts.VerticalGroundScale;
             LineLength = Consts.LineLength;
             PlanLength = Consts.LineLength;
             ShowBiasToLengthFlag = true;
@@ -40,11 +40,6 @@ namespace ProfileMaker
             Radius = 350;
             _loadFileMessage = "";
             _saveButtonEnableFlag = false;
-            /*if (DateTime.Now. Date >= new DateTime (2023, 3, 1))
-            {
-            MessageBox.Show("Update required.", "ProfileMaker Application");
-            Environment.Exit (0);
-            }*/
         }
 
         /// <summary>
@@ -207,14 +202,14 @@ namespace ProfileMaker
                 {
                     SaveButtonEnableFlag = false;
                     var startLength = EnterStartLength ? Math.Floor(StartLength) : 0;
-                    _externalData = ExcelReader.ReadExcelDocument(_dialogService.FilePath, startLength);
+                    _externalData = ExcelHandler.ReadExcelDocument(_dialogService.FilePath, startLength);
                     LoadFileMessage = $"Файл {_dialogService.FileName} загружен";
                     SaveButtonEnableFlag = true;
                 }
             }
             catch (Exception e)
             {
-                _dialogService.ShowMessage($"Heвозможно загрузить дайл. {e.Message}");
+                _dialogService.ShowMessage($"Heвозможно загрузить файл. {e.Message}");
             }
         }
 
@@ -326,7 +321,7 @@ namespace ProfileMaker
                     SaveButtonEnableFlag = true;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 _dialogService.ShowMessage($"Невозможно сохранить файл профиля. (e.Message)");
             }
@@ -361,7 +356,7 @@ namespace ProfileMaker
                         interpolatedTable.Add(point);
                         prevPoint = point;
                     }
-                    ExcelReader.WriteExcelDocument(_dialogService.FilePath, interpolatedTable);
+                    ExcelHandler.WriteExcelDocument(_dialogService.FilePath, interpolatedTable);
                     SaveButtonEnableFlag = true;
                     MessageBox.Show("Файл сохранен");
                 }

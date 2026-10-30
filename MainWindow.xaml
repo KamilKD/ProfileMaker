@@ -6,113 +6,100 @@
         xmlns:local="clr-namespace:ProfileMaker"
         mc:Ignorable="d"
         Title="ProfileMaker" Height="450" Width="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="30" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"/>
-            <ColumnDefinition Width="500" />
-        </Grid.ColumnDefinitions>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="30" />
+			<RowDefinition Height="30" />
+			<RowDefinition Height="30" />
+			<RowDefinition Height="30" />
+			<RowDefinition Height="30" />
+			<RowDefinition Height="30" />
+			<RowDefinition Height="30" />
+			<RowDefinition Height="30" />
+			<RowDefinition Height="30" />
+			<RowDefinition Height="30" />
+			<RowDefinition Height="30" />
+			<RowDefinition Height="30" />
+			<RowDefinition Height="30" />
+			<RowDefinition Height="30" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="300"/>
+			<ColumnDefinition Width="500" />
+		</Grid.ColumnDefinitions>
 
-        <Button Content="3агрузить файл" Grid.Row="0" Command="{Binding LoadFileCommand}"/>
-        <TextBlock Text="{Binding Path=LoadFileMessage, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="1"/>
-        <Button Content="Соxранить профиль" IsEnabled="{Binding Path=SaveButtonEnableFlag, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Command="{Binding SaveProileCommand}" Width="140" HorizontalAlignment="Left"/>
-        <Button Content="Соxранить план" IsEnabled="{Binding Path=SaveButtonEnableFlag, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Command="{Binding SavePlaneCommand}" Width="140" HorizontalAlignment="Right"/>
-        <Button Content="Экспортировать Excel" IsEnabled="{Binding Path=SaveButtonEnableFlag, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Command="{Binding ExportFileCommand}"/>
+		<Button Content="3агрузить файл" Grid.Row="0" Command="{Binding LoadFileCommand}"/>
+		<TextBlock Text="{Binding Path=LoadFileMessage, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="1"/>
+		<Button Content="Соxранить профиль" IsEnabled="{Binding Path=SaveButtonEnableFlag, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Command="{Binding SaveProileCommand}" Width="140" HorizontalAlignment="Left"/>
+		<Button Content="Соxранить план" IsEnabled="{Binding Path=SaveButtonEnableFlag, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Command="{Binding SavePlaneCommand}" Width="140" HorizontalAlignment="Right"/>
+		<Button Content="Экспортировать Excel" IsEnabled="{Binding Path=SaveButtonEnableFlag, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Command="{Binding ExportFileCommand}"/>
 
-        <!-- Ввод параметров масштаба графика -->
-        <Label Grid.Row="3" Grid.Column="0" Content="Масштаб графика по горизонтали 1:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 0 0"/>
-        <Label Grid.Row="4" Grid.Column="0" Content="Масштаб графика по вертикали 1:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0"/>
-        <Label Grid.Row="5" Grid.Column="0" Content="Длина участка продиля (м) :" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="45 0 0 0"/>
+		<!-- Ввод параметров масштаба графика -->
+		<Label Grid.Row="3" Grid.Column="0" Content="Масштаб графика по горизонтали 1:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 0 0"/>
+		<Label Grid.Row="4" Grid.Column="0" Content="Масштаб графика по вертикали 1:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0"/>
+		<Label Grid.Row="5" Grid.Column="0" Content="Длина участка продиля (м) :" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="45 0 0 0"/>
 
-        <TextBox Grid.Row="3" Grid.Column="0" Text="{Binding Path=HorizontalScale, UpdateSourceTrigger=PropertyChanged}" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="210 0 0 0"/>
-        <TextBox Grid.Row="4" Grid.Column="0" Text="{Binding Path=VertcalScale, UpdateSourceTrigger=PropertyChanged}" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="210 0 0 0"/>
-        <TextBox Grid.Row="5" Grid.Column="0" Text="{Binding Path=LineLength, UpdateSourceTrigger=PropertyChanged}" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="210 0 0 0"/>
+		<TextBox Grid.Row="3" Grid.Column="0" Text="{Binding Path=HorizontalScale, UpdateSourceTrigger=PropertyChanged}" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="210 0 0 0"/>
+		<TextBox Grid.Row="4" Grid.Column="0" Text="{Binding Path=VerticalScale, UpdateSourceTrigger=PropertyChanged}" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="210 0 0 0"/>
+		<TextBox Grid.Row="5" Grid.Column="0" Text="{Binding Path=LineLength, UpdateSourceTrigger=PropertyChanged}" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="210 0 0 0"/>
 
-<!-- Ввод параметров масштаба плана-->
-        <Label Grid.Row="4" Grid.Column="1" Content="Длина участка плана (M): " HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 0 0"/>
-        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Path=PlanLength, UpdateSourceTrigger=PropertyChanged}" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="150 0 0 0"/>
+		<!-- Ввод параметров масштаба плана-->
+		<Label Grid.Row="4" Grid.Column="1" Content="Длина участка плана (M): " HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 0 0"/>
+		<TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Path=PlanLength, UpdateSourceTrigger=PropertyChanged}" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="150 0 0 0"/>
 
-        <!-- Настройка отображения строк в таблице профиля -->
-<CheckBox Grid.Row="6" IsChecked="{Binding Path=ShowBiasToLengthFlag}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-<Label Grid.Row="6" Content="Orpисовывать строку уклон/Длина" Margin="15 0 0 0" VerticalAlignment="Center"/>
+		<!-- Настройка отображения строк в таблице профиля -->
+		<CheckBox Grid.Row="6" IsChecked="{Binding Path=ShowBiasToLengthFlag}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+		<Label Grid.Row="6" Content="Orpисовывать строку Уклон/Длина" Margin="15 0 0 0" VerticalAlignment="Center"/>
 
-<CheckBox Grid.Row="7" IsChecked="{Binding Path=ShowDepthFlag}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-<Label Grid.Row="7" Content="Oтрисовывать строку глубина" Margin="15 0 0 0" VerticalAlignment="Center"/>
+		<CheckBox Grid.Row="7" IsChecked="{Binding Path=ShowDepthFlag}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+		<Label Grid.Row="7" Content="Oтрисовывать строку Глубина" Margin="15 0 0 0" VerticalAlignment="Center"/>
 
-<CheckBox Grid.Row="8" IsChecked="{Binding Path=ShowGroundMarkFlag}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-<Label Grid.Row="8" Content="Отрисовывать строку Oтметка земли" Margin="15 0 0 0" VerticalAlignment="Center"/>
+		<CheckBox Grid.Row="8" IsChecked="{Binding Path=ShowGroundMarkFlag}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+		<Label Grid.Row="8" Content="Отрисовывать строку Oтметка земли" Margin="15 0 0 0" VerticalAlignment="Center"/>
 
-<CheckBox Grid.Row="9" IsChecked="{Binding Path=ShowTubeMarkFlag}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-<Label Grid.Row="9" Content="Oтpисовывать строку Oтметка вержа трубы" Margin="15 0 0 0" VerticalAlignment="Center"/>
+		<CheckBox Grid.Row="9" IsChecked="{Binding Path=ShowTubeMarkFlag}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+		<Label Grid.Row="9" Content="Oтpисовывать строку Oтметка верха трубы" Margin="15 0 0 0" VerticalAlignment="Center"/>
 
-<CheckBox Grid.Row="10" IsChecked="{Binding Path=ShowDistanceFla}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-<Label Grid.Row="10" Content="Отрисовывать строку Расстояния" Margin="15 0 0 0" VerticalAlignment="Center"/>
+		<CheckBox Grid.Row="10" IsChecked="{Binding Path=ShowDistanceFlag}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+		<Label Grid.Row="10" Content="Отрисовывать строку Расстояния" Margin="15 0 0 0" VerticalAlignment="Center"/>
 
-<Label Grid.Row="8" Content="Отрисовывать строку Отметка земли"
-Margin="15 0 0 0" VerticalAlignment="Center"/>
+		<CheckBox Grid.Row="11" IsChecked="{Binding Path=ShowPicketsFlag}"
+		HorizontalAlignment="Left" VerticalAlignment="Center"/>
+		<Label Grid.Row="11" Content="Отрисовunать строку Пикеты"
+		Margin="15 0 0 0" VerticalAlignment="Center"/>
 
-<CheckBox Grid.Row="9" IsChecked="{Binding Path=ShowTubeMarkFlag}"
-HorizontalAlignment="Left" VerticalAlignment="Center"/>
-<Label Grid.Row="9" Content="Отрисовывать строку Отметка верха трубы"
-Margin="15 0 0 0" VerticalAlignment="Center"/>
+		<CheckBox Grid.Row="12" IsChecked="{Binding Path=ShowKmFlag}"
+		HorizontalAlignment="Left" VerticalAlignment="Center"/>
+		<Label Grid.Row="12" Content="Отрисовывать строку Километры"
+		Margin="15 0 0 0" VerticalAlignment="Center"/>
 
-<CheckBox Grid.Row="10" IsChecked="{Binding Path=ShowDistanceFlag}"
-HorizontalAlignment="Left" VerticalAlignment="Center"/>
-<Label Grid.Row="10" Content="Отрисовывать строку Расстояния"
-Margin="15 0 0 0" VerticalAlignment="Center"/>
+		<CheckBox Grid.Row="6" Grid.Column="1" IsChecked="{Binding Path=UseInterpolateCoordinates}"
+		Name="UseRealCoordinate" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+		<Label Grid.Row="6" Grid.Column="1" Content="Использовать интерполированные координаты точeк"
+		Margin="15 0 0 0" VerticalAlignment="Center"/>
 
-<CheckBox Grid.Row="11" IsChecked="{Binding Path=ShowPicketsFlag}" 
-HorizontalAlignment="Left" VerticalAlignment="Center"/>
-<Label Grid.Row="11" Content="Отрисовunать строку Пикеты" 
-Margin="15 0 0 0" VerticalAlignment="Center"/>
+		<TextBox Grid.Row="7" Grid.Column="1" Text="{Binding Path=InterpolatedInterval, UpdateSourceTrigger=PropertyChanged}"
+		IsEnabled="{Binding Path=UseInterpolateCoordinates, UpdateSourceTrigger=Default}"
+		Width="50" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 0 5"/>
 
-<CheckBox Grid.Row="12" IsChecked="{Binding Path=ShowKmFlag}" 
-HorizontalAlignment="Left" VerticalAlignment="Center"/>
-<Label Grid.Row="12" Content="Отрисовывать строку Километры"
-Margin="15 0 0 0" VerticalAlignment="Center"/>
+		<Label Grid.Row="7" Grid.Column="1" Content="Длинa участка при интерполяции точек"
+		HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50 0 0 0"/>
 
-<CheckBox Grid.Row="6" Grid.Column="1" IsChecked="{Binding Path=UseInterpolateCoordinates}"
-Name="UseRealCoordinate" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-<Label Grid.Row="6" Grid.Column="1" Content="Использовать интерполированные координаты точeк"
-Margin="15 0 0 0" VerticalAlignment="Center"/>
+		<CheckBox Grid.Row="8" Grid.Column="1" IsChecked="{Binding Path=EnterStartLength}"
+		Name="EnterStartLength" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+		<Label Grid.Row="8" Grid.Column="1" Content="Вводить начальное расстояние вручную"
+		Margin="15 0 0 0" VerticalAlignment="Center"/>
 
-<TextBox Grid.Row="7" Grid.Column="1" Text="{Binding Path=InterpolatedInterval, UpdateSourceTrigger=PropertyChanged}"
-IsEnabled="{Binding Path=UseInterpolateCoordinates, UpdateSourceTrigger=Default}"
-Width="50" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 0 5"/>
+		<TextBox Grid.Row="9" Grid.Column="1" Text="{Binding Path=StartLength, UpdateSourceTrigger=PropertyChanged}"
+		IsEnabled="{Binding Path=EnterStartLength, UpdateSourceTrigger=Default}"
+		Width="50" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 0 5"/>
+		<Label Grid.Row="9" Grid.Column="1" Content="Нaчaльное расстояние (м)"
+		HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50 0 0 0"/>
 
-<Label Grid.Row="7" Grid.Column="1" Content="Длинa участка при интерполяции точек"
-HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50 0 0 0"/>
+		<TextBox Grid.Row="13" Grid.Column="0" Text="{Binding Path=Radius, UpdateSourceTrigger=PropertyChanged}"
+		Width="50" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 0 5"/>
+		<Label Grid.Row="13" Grid.Column="0" Content="Pадиус трубы, мм"
+		HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50 0 0 0"/>
 
-<CheckBox Grid.Row="8" Grid.Column="1" IsChecked="{Binding Path=EnterStartLength}"
-Name="EnterStartLength" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-<Label Grid.Row="8" Grid.Column="1" Content="Вводить начальное расстояние вручную"
-Margin="15 0 0 0" VerticalAlignment="Center"/>
-
-<TextBox Grid.Row="9" Grid.Column="1" Text="{Binding Path=StartLength, UpdateSourceTrigger=PropertyChanged}"
-IsEnabled="{Binding Path=EnterStartLength, UpdateSourceTrigger=Default}"
-Width="50" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 0 5"/>
-<Label Grid.Row="9" Grid.Column="1" Content="Нaчaльное расстояние (м)"
-HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50 0 0 0"/>
-
-<TextBox Grid.Row="13" Grid.Column="0" Text="{Binding Path=Radius, UpdateSourceTrigger=PropertyChanged}"
-Width="50" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 0 5"/>
-<Label Grid.Row="13" Grid.Column="0" Content="PаДиус трубы, мм"
-HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50 0 0 0"/>
-
-    </Grid>
+	</Grid>
 </Window>

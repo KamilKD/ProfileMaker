@@ -14,7 +14,7 @@ namespace ProfileMaker.Utils
     /// <summary>
     /// Клас для чтения схемы из еxcel
     /// </summary>
-    public static class ExcelReader
+    public static class ExcelHandler
     {
         /// <summary>
         /// Чтение даных из файла по указанному пути

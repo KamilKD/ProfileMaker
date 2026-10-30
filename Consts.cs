@@ -18,12 +18,12 @@ namespace ProfileMaker
         /// <summary>
         /// Масштаб по вертикали
         /// </summary>
-        public static int VertcalScale = 1000;
+        public static int VerticalScale = 1000;
 
         /// <summary>
         /// Масштаб по вертикали, грунта
         /// </summary>
-        public static int VertcalGroundScale = 100;
+        public static int VerticalGroundScale = 100;
 
         /// <summary>
         /// Масштаб для отрисовки плана

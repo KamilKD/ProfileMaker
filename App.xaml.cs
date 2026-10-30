@@ -1,5 +1,6 @@
 ﻿using System.Configuration;
 using System.Data;
+using System.Text;
 using System.Windows;
 
 namespace ProfileMaker
@@ -9,6 +10,10 @@ namespace ProfileMaker
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+        }
     }
 
 }

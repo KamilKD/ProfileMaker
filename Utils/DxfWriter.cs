@@ -1,10 +1,5 @@
 ﻿using ProfileMaker.Models;
-using System;
-using System.Collections.Generic;
-using System.DirectoryServices.ActiveDirectory;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 
 
 namespace ProfileMaker.Utils
@@ -50,50 +45,18 @@ namespace ProfileMaker.Utils
         double enteredStartLength)
         {
             var dataByLists = DivideBySections(externalData, lineLength, enteredStartLength);
-
-            // Загрузка шаблонов
-            string headerSamplePath = AppDomain.CurrentDomain.BaseDirectory + "\\SAMPLES\\HEADERS.txt";
-            var headers = "";
-            using (StreamReader reader = new StreamReader(headerSamplePath, System.Text.Encoding.GetEncoding("windows-1251")))
+            string samplePath = AppDomain.CurrentDomain.BaseDirectory + "\\SAMPLES\\SAMPLE.txt";
+            var sample = "";
+            using (StreamReader reader = new StreamReader(samplePath, System.Text.Encoding.GetEncoding("windows-1251")))
             {
-                headers = await reader.ReadToEndAsync();
-            }
-            string classesSamplePath = AppDomain.CurrentDomain.BaseDirectory + "\\SAMPLES\\CLASSES.txt";
-            var classes = "";
-            using (StreamReader reader = new StreamReader(classesSamplePath, System.Text.Encoding.GetEncoding("windows-1251")))
-            {
-                classes = await reader.ReadToEndAsync();
-            }
-            string tablesSamplePath = AppDomain.CurrentDomain.BaseDirectory + "\\SAMPLES\\TABLES.txt";
-            var tables = "";
-            using (StreamReader reader = new StreamReader(tablesSamplePath))
-            {
-                tables = await reader.ReadToEndAsync();
-            }
-            string blocksSamplePath = AppDomain.CurrentDomain.BaseDirectory + "\\SAMPLES\\BLOCKS.txt";
-            var blocks = "";
-            using (StreamReader reader = new StreamReader(blocksSamplePath, System.Text.Encoding.GetEncoding("windows-1251")))
-            {
-                blocks = await reader.ReadToEndAsync();
-            }
-            string entitiesSamplePath = AppDomain.CurrentDomain.BaseDirectory + "\\SAMPLES\\ENTITIES.txt";
-            var entities = "";
-            using (StreamReader reader = new StreamReader(entitiesSamplePath))
-            {
-                entities = await reader.ReadToEndAsync();
-            }
-            string objectsSamplePath = AppDomain.CurrentDomain.BaseDirectory + "\\SAMPLES\\OBJECTS.txt";
-            var objects = "";
-            using (StreamReader reader = new StreamReader(objectsSamplePath, System.Text.Encoding.GetEncoding("windows-1251")))
-            {
-                objects = await reader.ReadToEndAsync();
+                sample = await reader.ReadToEndAsync();
             }
 
             // Отрисовка графиков
             foreach (var page in dataByLists)
             {
                 var planCompiler = new PlanCompiler(lineLength, horizontalScale, vertcalScale);
-                var currEntities = entities;
+                var currEntities = ""; //entities;
                 //currEntities += await planCompiler.CreateKren();
                 currEntities += await planCompiler.FrameDraw();
                 currEntities += await planCompiler.ScaleDraw(page);
@@ -132,18 +95,14 @@ namespace ProfileMaker.Utils
                 showDistanceFlag,
                 radius,
                 enteredStartLength);
-                currEntities += "\n  0\nENDSEC";
 
                 var fileIndex = dataByLists.IndexOf(page) + 1;
                 var file = filePath.Insert(filePath.Length - 4, "_" + fileIndex.ToString());
                 using (StreamWriter writer = new StreamWriter(file, true))
                 {
-                    await writer.WriteLineAsync(headers);
-                    await writer.WriteLineAsync(classes);
-                    await writer.WriteLineAsync(tables);
-                    await writer.WriteLineAsync(blocks);
+                    await writer.WriteLineAsync(sample);
                     await writer.WriteLineAsync(currEntities);
-                    await writer.WriteLineAsync(objects);
+                    await writer.WriteLineAsync("\n  0\nENDSEC");
                     await writer.WriteLineAsync("  0\nEOF");
                 }
             }
@@ -168,47 +127,12 @@ namespace ProfileMaker.Utils
         int horizontalScale,
         int verticalScale)
         {
-            // Загрузка шаблонов
-            string headerSamplePath = AppDomain.CurrentDomain.BaseDirectory + "\\SAMPLES\\HEADERS.txt";
-            var headers = "";
-            using (StreamReader reader = new StreamReader(headerSamplePath, System.Text.Encoding.GetEncoding("windows-1251")))
-            {
-                headers = await reader.ReadToEndAsync();
-            }
 
-            string classesSamplePath = AppDomain.CurrentDomain.BaseDirectory + "\\SAMPLES\\CLASSES.txt";
-            var classes = "";
-            using (StreamReader reader = new StreamReader(classesSamplePath, System.Text.Encoding.GetEncoding("windows-1251")))
+            string samplePath = AppDomain.CurrentDomain.BaseDirectory + "\\SAMPLES\\SAMPLE.txt";
+            var sample = "";
+            using (StreamReader reader = new StreamReader(samplePath, System.Text.Encoding.GetEncoding("windows-1251")))
             {
-                classes = await reader.ReadToEndAsync();
-            }
-
-            string tablesSamplePath = AppDomain.CurrentDomain.BaseDirectory + "\\SAMPLES\\TABLES.txt";
-            var tables = "";
-            using (StreamReader reader = new StreamReader(tablesSamplePath))
-            {
-                tables = await reader.ReadToEndAsync();
-            }
-
-            string blocksSamplePath = AppDomain.CurrentDomain.BaseDirectory + "\\SAMPLES\\BLOCKS.txt";
-            var blocks = "";
-            using (StreamReader reader = new StreamReader(blocksSamplePath, System.Text.Encoding.GetEncoding("windows-1251")))
-            {
-                blocks = await reader.ReadToEndAsync();
-            }
-
-            string entitiesSamplePath = AppDomain.CurrentDomain.BaseDirectory + "\\SAMPLES\\ENTITIES.txt";
-            var entities = "";
-            using (StreamReader reader = new StreamReader(entitiesSamplePath))
-            {
-                entities = await reader.ReadToEndAsync();
-            }
-
-            string objectsSamplePath = AppDomain.CurrentDomain.BaseDirectory + "\\SAMPLES\\OBJECTS.txt";
-            var objects = "";
-            using (StreamReader reader = new StreamReader(objectsSamplePath, System.Text.Encoding.GetEncoding("windows-1251")))
-            {
-                objects = await reader.ReadToEndAsync();
+                sample = await reader.ReadToEndAsync();
             }
 
             var planeByLists = DivideBySections(externalData, planeLength);
@@ -220,17 +144,13 @@ namespace ProfileMaker.Utils
                     var fileIndex = planeByLists.IndexOf(page);
                     var fileTrack = filePath.Insert(filePath.Length - 4, "_" + "Track" + fileIndex.ToString());
                     var trackPlanCompiler = new PlanCompiler(lineLength, horizontalScale, verticalScale);
-                    var trackEntities = entities;
+                    var trackEntities = "";
                     trackEntities += await trackPlanCompiler.TubeLineDraw(page, planeLength, planeByLists.IndexOf(page));
                     trackEntities += "\n  0\nENDSEC";
                     using (StreamWriter writer = new StreamWriter(fileTrack, true))
                     {
-                        await writer.WriteLineAsync(headers);
-                        await writer.WriteLineAsync(classes);
-                        await writer.WriteLineAsync(tables);
-                        await writer.WriteLineAsync(blocks);
+                        await writer.WriteLineAsync(sample);
                         await writer.WriteLineAsync(trackEntities);
-                        await writer.WriteLineAsync(objects);
                         await writer.WriteLineAsync("  0\nEOF");
                     }
                     a++;
